@@ -1,15 +1,292 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>게임 사이트</title>
-    <link rel="stylesheet" href="style.css">
+    <title>🎮 게임 홍보 영상 모음</title>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #8892b0;
+            font-size: 1.1rem;
+        }
+        
+        .category {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4ecdc4;
+            display: inline-block;
+        }
+        
+        .new .category-title {
+            border-bottom-color: #ff6b6b;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #4ecdc4;
+        }
+        
+        .new .game-card h3 {
+            color: #ff6b6b;
+        }
+        
+        .game-card p {
+            color: #8892b0;
+            line-height: 1.5;
+        }
+        
+        .play-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .youtube-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 4px;
+            margin-right: 8px;
+            position: relative;
+        }
+        
+        .youtube-icon::after {
+            content: '▶';
+            color: white;
+            font-size: 10px;
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @media (max-width: 768px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- HTML 내용 -->
+        <header>
+            <h1>🎮 게임 홍보 영상</h1>
+            <p class="subtitle">최신게임과 인기게임의 트레일러를 만나보세요</p>
+        </header>
+        
+        <!-- 최신게임 섹션 -->
+        <section class="category new">
+            <h2 class="category-title">🆕 최신게임</h2>
+            <div class="game-grid" id="new-games">
+                <!-- 여기에 최신게임들이 동적으로 로드됩니다 -->
+            </div>
+        </section>
+        
+        <!-- 인기게임 섹션 -->
+        <section class="category popular">
+            <h2 class="category-title">🔥 인기게임</h2>
+            <div class="game-grid" id="popular-games">
+                <!-- 여기에 인기게임들이 동적으로 로드됩니다 -->
+            </div>
+        </section>
     </div>
-    
-    <!-- JavaScript 파일 연결 -->
-    <script src="script.js"></script>
+
+    <script>
+        // Notion 대신 간단한 JSON 데이터로 관리
+        const games = [
+            {
+                name: "스타필드",
+                youtubeId: "dQlBgPjvBBg",
+                category: "new",
+                description: "Bethesda의 차세대 우주 RPG"
+            },
+            {
+                name: "파이널 판타지 VII 리버스",
+                youtubeId: "ZSRHeC6KLPw", 
+                category: "new",
+                description: "클래식 RPG의 리메이크"
+            },
+            {
+                name: "리그 오브 레전드",
+                youtubeId: "BGtROJeMPeE",
+                category: "popular", 
+                description: "세계 최고의 MOBA 게임"
+            },
+            {
+                name: "오버워치 2",
+                youtubeId: "GKXS_YA9s7E",
+                category: "popular",
+                description: "팀 기반 히어로 슈터"
+            },
+            {
+                name: "발로란트",
+                youtubeId: "e_E9W2vsRbQ",
+                category: "popular", 
+                description: "전략적 FPS의 신흥 강자"
+            },
+            {
+                name: "젤다의 전설: 티어스 오브 더 킹덤",
+                youtubeId: "uHGShqcAHlQ",
+                category: "new",
+                description: "하이랄을 구하러 떠나는 모험"
+            }
+        ];
+
+        function loadGames() {
+            const newGamesContainer = document.getElementById('new-games');
+            const popularGamesContainer = document.getElementById('popular-games');
+            
+            // 기존 내용 비우기
+            newGamesContainer.innerHTML = '';
+            popularGamesContainer.innerHTML = '';
+            
+            games.forEach(game => {
+                const gameCard = createGameCard(game);
+                
+                if (game.category === 'new') {
+                    newGamesContainer.appendChild(gameCard);
+                } else {
+                    popularGamesContainer.appendChild(gameCard);
+                }
+            });
+        }
+
+        function createGameCard(game) {
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            card.onclick = () => openYouTube(game.youtubeId);
+            
+            card.innerHTML = `
+                <h3>${game.name}</h3>
+                <p>${game.description}</p>
+                <button class="play-btn" onclick="event.stopPropagation(); openYouTube('${game.youtubeId}')">
+                    <span class="youtube-icon"></span>
+                    영상 보기
+                </button>
+            `;
+            
+            return card;
+        }
+
+        function openYouTube(videoId) {
+            // YouTube 영상 새 창에서 열기
+            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+            
+            // 또는 임베드된 영상으로 보기 (아래 코드 사용시)
+            // showVideoModal(videoId);
+        }
+
+        // 모달로 영상 보기 (선택사항)
+        function showVideoModal(videoId) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="position: relative; width: 80%; max-width: 800px;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: -40px; right: 0; background: red; color: white; border: none; padding: 10px; cursor: pointer;">
+                        닫기
+                    </button>
+                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/${videoId}" 
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+            `;
+            
+            modal.onclick = (e) => {
+                if (e.target === modal) modal.remove();
+            };
+            
+            document.body.appendChild(modal);
+        }
+
+        // 페이지 로드시 게임 목록 불러오기
+        document.addEventListener('DOMContentLoaded', loadGames);
+    </script>
 </body>
 </html>
