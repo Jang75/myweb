@@ -144,7 +144,7 @@
       z-index: 1;
     }
 
-    /* 🔥 게임명 강조 - 색감 업그레이드 */
+    /* 🔥 게임명 강조 */
     .game-title-pill {
       display: inline-flex;
       align-items: center;
@@ -156,7 +156,7 @@
     }
 
     .game-title {
-      font-size: 1rem; /* 모바일에서도 크게 보이게 */
+      font-size: 1rem;
       font-weight: 800;
       color: #052e16;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -167,7 +167,6 @@
       max-width: 100px;
     }
 
-    /* 인기/특가 태그 */
     .badge-pill {
       font-size: 0.7rem;
       padding: 3px 8px;
@@ -187,7 +186,6 @@
       background: #22c55e;
     }
 
-    /* 썸네일 */
     .thumb {
       position: relative;
       background: radial-gradient(circle at top, #020617, #020617);
@@ -252,123 +250,6 @@
       color: #9ca3af;
     }
 
-    .admin-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      font-size: 0.7rem;
-      background: rgba(248, 250, 252, 0.98);
-      color: #111827;
-      padding: 2px 7px;
-      border-radius: 999px;
-      display: none;
-      z-index: 2;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7);
-    }
-
-    .admin-mode .admin-badge {
-      display: inline-block;
-    }
-
-    .admin-buttons {
-      display: none;
-      margin-top: 4px;
-      gap: 6px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .admin-mode .admin-buttons {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      background: #111827;
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: transform 0.1s ease, box-shadow 0.1s ease,
-        background 0.15s ease;
-      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.8);
-    }
-
-    .btn span.icon {
-      font-size: 0.9rem;
-    }
-
-    .btn-edit {
-      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
-      color: #f9fafb;
-    }
-
-    .btn-reset {
-      background: #374151;
-      color: #e5e7eb;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.9);
-      filter: brightness(1.05);
-    }
-
-    /* 오른쪽 아래 관리자 플로팅 바 */
-    #admin-bar {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      z-index: 20;
-      align-items: flex-end;
-    }
-
-    #admin-toggle {
-      padding: 9px 14px;
-      font-size: 0.8rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: radial-gradient(circle at 30% 20%, #facc15, #f97316);
-      color: #111827;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
-    }
-
-    #admin-toggle.admin-on {
-      background: radial-gradient(circle at 30% 20%, #22c55e, #16a34a);
-      color: #ecfdf5;
-    }
-
-    #admin-info {
-      font-size: 0.7rem;
-      background: rgba(15, 23, 42, 0.98);
-      color: #e5e7eb;
-      padding: 7px 10px;
-      border-radius: 10px;
-      max-width: 260px;
-      display: none;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 1);
-    }
-
-    #admin-info.show {
-      display: block;
-    }
-
-    #admin-info b {
-      color: #facc15;
-    }
-
-    /* 모달 */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -459,7 +340,7 @@
 <body>
   <header>
     <h1>무똑딱이 홍보영상</h1>
-    <p>영등포유통상가 백기사 010-7350-8836</p>
+    <p>영등포유통상가 백기사010-7350-8836 임대,업방 </p>
   </header>
 
   <main>
@@ -492,16 +373,6 @@
     </section>
   </main>
 
-  <!-- 관리자 버튼/정보 -->
-  <div id="admin-bar">
-    <button id="admin-toggle">관리자 로그인</button>
-    <div id="admin-info">
-      ● <b>관리자 모드</b>에서는 각 게임의 <b>이름 / 유튜브 주소</b>를 수정할 수 있습니다.<br />
-      ● 수정 내용은 이 브라우저의 <b>localStorage</b>에 저장됩니다.<br />
-      ● 다른 기기에서는 처음 접속 시 기본 목록이 보입니다.
-    </div>
-  </div>
-
   <!-- 영상 모달 -->
   <div class="modal-backdrop" id="video-modal">
     <div class="modal">
@@ -525,60 +396,35 @@
   </footer>
 
   <script>
-    // ====== 1. 기본 게임 목록 ======
+    // 기본값(혹시 games.json을 못 불러올 때 사용)
     const DEFAULT_POPULAR_GAMES = [
-      { title: "한산", videoId: "" },
-      { title: "레전드", videoId: "" },
-      { title: "킹불새", videoId: "" },
-      { title: "황금성K", videoId: "" },
-      { title: "손행자", videoId: "" },
-      { title: "태평양", videoId: "" }
+      { title: "한산", youtube: "" },
+      { title: "레전드", youtube: "" },
+      { title: "킹불새", youtube: "" },
+      { title: "황금성K", youtube: "" },
+      { title: "손행자", youtube: "" },
+      { title: "태평양", youtube: "" }
     ];
 
     const DEFAULT_SPECIAL_GAMES = [
-      { title: "고진감래", videoId: "" },
-      { title: "불용5", videoId: "" },
-      { title: "군함", videoId: "" },
-      { title: "신비룡", videoId: "" },
-      { title: "삼순이", videoId: "" },
-      { title: "드래곤플라이", videoId: "" },
-      { title: "슈퍼회오리2", videoId: "" },
-      { title: "도채비", videoId: "" },
-      { title: "아테네", videoId: "" },
-      { title: "사천성", videoId: "" },
-      { title: "요술램프", videoId: "" },
-      { title: "대서양", videoId: "" }
+      { title: "고진감래", youtube: "" },
+      { title: "불용5", youtube: "" },
+      { title: "군함", youtube: "" },
+      { title: "신비룡", youtube: "" },
+      { title: "삼순이", youtube: "" },
+      { title: "드래곤플라이", youtube: "" },
+      { title: "슈퍼회오리2", youtube: "" },
+      { title: "도채비", youtube: "" },
+      { title: "아테네", youtube: "" },
+      { title: "사천성", youtube: "" },
+      { title: "요술램프", youtube: "" },
+      { title: "대서양", youtube: "" }
     ];
 
-    // ====== 2. 관리자 비밀번호 ======
-    const ADMIN_PASSWORD = "2000";
+    let popularGames = DEFAULT_POPULAR_GAMES;
+    let specialGames = DEFAULT_SPECIAL_GAMES;
 
-    // ====== 3. localStorage 연동 ======
-    function loadGames(key, defaultValue) {
-      try {
-        const saved = localStorage.getItem(key);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed)) return parsed;
-        }
-      } catch (e) {
-        console.warn("loadGames error:", e);
-      }
-      return JSON.parse(JSON.stringify(defaultValue));
-    }
-
-    function saveGames(key, data) {
-      try {
-        localStorage.setItem(key, JSON.stringify(data));
-      } catch (e) {
-        console.warn("saveGames error:", e);
-      }
-    }
-
-    let popularGames = loadGames("popularGames", DEFAULT_POPULAR_GAMES);
-    let specialGames = loadGames("specialGames", DEFAULT_SPECIAL_GAMES);
-
-    // ====== 4. YouTube URL → ID 추출 ======
+    // YouTube URL → ID 추출
     function extractYouTubeId(input) {
       if (!input) return "";
       const trimmed = input.trim();
@@ -589,19 +435,10 @@
       return match ? match[1] : trimmed;
     }
 
-    // ====== 5. 렌더링 ======
     const popularListEl = document.getElementById("popular-list");
     const specialListEl = document.getElementById("special-list");
-    let isAdmin = false;
-
-    function syncFromStorage() {
-      popularGames = loadGames("popularGames", popularGames);
-      specialGames = loadGames("specialGames", specialGames);
-    }
 
     function renderList() {
-      syncFromStorage();
-      document.body.classList.toggle("admin-mode", isAdmin);
       renderSection(popularListEl, popularGames, "popular");
       renderSection(specialListEl, specialGames, "special");
     }
@@ -611,11 +448,6 @@
       games.forEach((game, index) => {
         const card = document.createElement("div");
         card.className = "game-card";
-
-        const adminBadge = document.createElement("span");
-        adminBadge.className = "admin-badge";
-        adminBadge.textContent = "관리 모드";
-        card.appendChild(adminBadge);
 
         const titleRow = document.createElement("div");
         titleRow.className = "game-title-row";
@@ -640,55 +472,38 @@
 
         const thumb = document.createElement("div");
         thumb.className = "thumb";
-        thumb.dataset.type = type;
-        thumb.dataset.index = index;
 
         const thumbInner = document.createElement("div");
         thumbInner.className = "thumb-inner";
 
-        if (game.videoId) {
+        const vid = extractYouTubeId(game.youtube || "");
+
+        if (vid) {
           thumbInner.innerHTML =
             '<div class="play-icon"><span>▶</span></div>';
+          thumb.addEventListener("click", () =>
+            openModal(game.title, vid)
+          );
         } else {
           thumbInner.innerHTML =
-            '<div class="no-video">영상 주소 미등록<small>관리자 모드에서 등록하세요</small></div>';
+            '<div class="no-video">영상 주소 미등록<small>GitHub의 games.json에서 등록하세요</small></div>';
         }
 
         thumb.appendChild(thumbInner);
         card.appendChild(thumb);
 
-        const adminButtons = document.createElement("div");
-        adminButtons.className = "admin-buttons";
-
-        const editBtn = document.createElement("button");
-        editBtn.className = "btn btn-edit";
-        editBtn.innerHTML = '<span class="icon">✏️</span><span>수정</span>';
-        editBtn.addEventListener("click", () => editGame(type, index));
-
-        const resetBtn = document.createElement("button");
-        resetBtn.className = "btn btn-reset";
-        resetBtn.innerHTML = '<span class="icon">↩️</span><span>초기화</span>';
-        resetBtn.addEventListener("click", () => resetGame(type, index));
-
-        adminButtons.appendChild(editBtn);
-        adminButtons.appendChild(resetBtn);
-        card.appendChild(adminButtons);
-
         container.appendChild(card);
       });
     }
 
-    // ====== 6. 썸네일 클릭 → 영상 모달 ======
+    // 모달 관련
     const modal = document.getElementById("video-modal");
     const modalIframe = document.getElementById("modal-iframe");
     const modalTitle = document.getElementById("modal-title");
     const modalClose = document.getElementById("modal-close");
 
     function openModal(title, videoId) {
-      if (!videoId) {
-        alert("영상 주소가 등록되어 있지 않습니다.");
-        return;
-      }
+      if (!videoId) return;
       modalTitle.textContent = title;
       modal.classList.add("show");
       modalIframe.src =
@@ -705,99 +520,25 @@
       if (e.target === modal) closeModal();
     });
 
-    document.addEventListener("click", (e) => {
-      const thumb = e.target.closest(".thumb");
-      if (!thumb) return;
-
-      const type = thumb.dataset.type;
-      const index = parseInt(thumb.dataset.index, 10);
-      const list = type === "popular" ? popularGames : specialGames;
-      const game = list[index];
-      openModal(game.title, game.videoId);
-    });
-
-    // ====== 7. 관리자 모드 ======
-    const adminToggle = document.getElementById("admin-toggle");
-    const adminInfo = document.getElementById("admin-info");
-
-    adminToggle.addEventListener("click", () => {
-      if (!isAdmin) {
-        const input = prompt("관리자 비밀번호를 입력하세요:", "");
-        if (input === ADMIN_PASSWORD) {
-          isAdmin = true;
-          adminToggle.textContent = "관리자 모드 종료";
-          adminToggle.classList.add("admin-on");
-          adminInfo.classList.add("show");
-          renderList();
-        } else {
-          alert("비밀번호가 올바르지 않습니다.");
+    // games.json 불러오기
+    fetch("games.json")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.popular && Array.isArray(data.popular)) {
+          popularGames = data.popular;
         }
-      } else {
-        isAdmin = false;
-        adminToggle.textContent = "관리자 로그인";
-        adminToggle.classList.remove("admin-on");
-        adminInfo.classList.remove("show");
+        if (data.special && Array.isArray(data.special)) {
+          specialGames = data.special;
+        }
         renderList();
-      }
-    });
-
-    // ====== 8. 게임 수정 / 초기화 ======
-    function editGame(type, index) {
-      const list = type === "popular" ? popularGames : specialGames;
-      const key = type === "popular" ? "popularGames" : "specialGames";
-      const game = list[index];
-
-      const newTitle = prompt(
-        "게임 이름을 입력하세요:",
-        game.title || ""
-      );
-      if (newTitle === null) return;
-
-      const newUrl = prompt(
-        "YouTube 주소 또는 영상 ID를 입력하세요:",
-        game.videoId || ""
-      );
-      if (newUrl === null) return;
-
-      const id = extractYouTubeId(newUrl);
-
-      list[index] = {
-        title: newTitle.trim() || "제목 없음",
-        videoId: id
-      };
-
-      saveGames(key, list);
-      renderList();
-    }
-
-    function resetGame(type, index) {
-      if (!confirm("이 게임을 기본값으로 되돌리시겠습니까?")) return;
-
-      let defaultList, list, key;
-      if (type === "popular") {
-        defaultList = DEFAULT_POPULAR_GAMES;
-        list = popularGames;
-        key = "popularGames";
-      } else {
-        defaultList = DEFAULT_SPECIAL_GAMES;
-        list = specialGames;
-        key = "specialGames";
-      }
-
-      if (defaultList[index]) {
-        list[index] = {
-          title: defaultList[index].title,
-          videoId: defaultList[index].videoId
-        };
-        saveGames(key, list);
+      })
+      .catch((err) => {
+        console.warn("games.json 로드 실패, 기본값 사용:", err);
         renderList();
-      }
-    }
+      });
 
-    // ====== 9. 초기 실행 ======
     document.getElementById("year").textContent =
       new Date().getFullYear();
-    renderList();
   </script>
 </body>
 </html>
