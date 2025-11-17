@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>무똑딱이 홍보영상</title>
 
-  <!-- (선택) 폰트 - 인터넷 연결 시 적용 -->
+  <!-- 🔍 검색(SEO) 관련 메타태그 -->
+  <title>게임장 - 무똑딱이 홍보영상</title>
+  <meta name="description"
+        content="게임장 인기게임·특가게임 유튜브 홍보영상 모음 페이지입니다. 한산, 레전드, 킹불새, 황금성K, 손행자, 태평양, 고진감래, 불용5 등 다양한 게임 영상을 한 곳에서 볼 수 있습니다.">
+  <meta name="keywords"
+        content="게임장, 오락실, 성인게임장, 인기게임, 특가게임, 한산, 레전드, 킹불새, 황금성K, 손행자, 태평양, 고진감래, 불용5, 군함, 신비룡, 삼순이, 드래곤플라이, 슈퍼회오리2, 도채비, 아테네, 사천성, 요술램프, 대서양">
+  <meta name="robots" content="index,follow" />
+
+  <!-- SNS(카카오톡, 페북 등) 공유용 -->
+  <meta property="og:title" content="게임장 - 무똑딱이 홍보영상" />
+  <meta property="og:description" content="게임장 인기/특가 게임 유튜브 영상을 모아보는 홍보 페이지" />
+  <meta property="og:type" content="website" />
+  <!-- 실제 도메인 주소로 바꾸세요 -->
+  <meta property="og:url" content="https://게임장.com/" />
+
+  <!-- (선택) 웹폰트 - 인터넷 연결 시 적용 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -23,7 +37,7 @@
     body {
       font-family: "Pretendard", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
       color: #e5e7eb;
       line-height: 1.5;
       min-height: 100vh;
@@ -33,23 +47,24 @@
     header {
       padding: 18px 16px 16px;
       text-align: center;
-      background: linear-gradient(120deg, #4f46e5, #06b6d4);
+      background: radial-gradient(circle at 10% 0, #f97316, #4f46e5 40%, #0ea5e9 100%);
       color: white;
-      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.4);
+      box-shadow: 0 6px 20px rgba(15, 23, 42, 0.7);
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
     header h1 {
-      font-size: 1.6rem;
-      letter-spacing: 0.03em;
-      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: 0.05em;
+      font-weight: 800;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
     }
 
     header p {
       font-size: 0.9rem;
-      opacity: 0.9;
+      opacity: 0.95;
       margin-top: 6px;
     }
 
@@ -75,16 +90,17 @@
 
     section h2 span.tag {
       font-size: 0.7rem;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 999px;
-      background: rgba(249, 250, 251, 0.08);
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(251, 191, 36, 0.9);
+      color: #facc15;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
     .section-sub {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       color: #9ca3af;
       margin-bottom: 12px;
     }
@@ -92,31 +108,31 @@
     /* 카드 그리드 */
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
       gap: 14px;
     }
 
     .game-card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 90%);
-      border-radius: 16px;
-      padding: 10px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at top left, #020617 0, #020617 55%, #020617 100%);
+      border-radius: 18px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(31, 41, 55, 0.95);
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
       position: relative;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.75);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.95);
       overflow: hidden;
     }
 
     .game-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right,
-        rgba(56, 189, 248, 0.12) 0,
-        transparent 55%);
-      opacity: 0.9;
+      inset: -40px;
+      background:
+        radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.04) 0, transparent 50%),
+        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.18) 0, transparent 55%);
+      opacity: 1;
       pointer-events: none;
     }
 
@@ -128,22 +144,50 @@
       z-index: 1;
     }
 
-    .game-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #f9fafb;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    /* 🔥 게임명 강조 - 색감 업그레이드 */
+    .game-title-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #22c55e, #a3e635);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.75);
+      border: 1px solid rgba(15, 23, 42, 0.85);
     }
 
+    .game-title {
+      font-size: 1rem; /* 모바일에서도 크게 보이게 */
+      font-weight: 800;
+      color: #052e16;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100px;
+    }
+
+    /* 인기/특가 태그 */
     .badge-pill {
       font-size: 0.7rem;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.9);
+      background: radial-gradient(circle at 30% 20%, rgba(8, 47, 73, 0.95), rgba(15, 23, 42, 0.95));
+      color: #e0f2fe;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
+    .badge-pill span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    /* 썸네일 */
     .thumb {
       position: relative;
       background: radial-gradient(circle at top, #020617, #020617);
@@ -154,8 +198,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(55, 65, 81, 0.8);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.95);
       z-index: 1;
     }
 
@@ -173,14 +217,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at center,
-        rgba(15, 23, 42, 0.15) 0,
-        transparent 50%);
+      background:
+        radial-gradient(circle at center, rgba(15, 23, 42, 0.25) 0, transparent 55%),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.2), transparent);
       pointer-events: none;
     }
 
     .play-icon {
-      font-size: 2.8rem;
+      font-size: 2.9rem;
       text-shadow: 0 6px 18px rgba(0, 0, 0, 0.9);
     }
 
@@ -189,8 +233,10 @@
       padding: 14px 19px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 30%, #facc15, #f97316);
-      box-shadow: 0 10px 30px rgba(248, 250, 252, 0.3);
-      border: 2px solid rgba(15, 23, 42, 0.8);
+      box-shadow:
+        0 12px 32px rgba(248, 250, 252, 0.38),
+        0 0 0 3px rgba(15, 23, 42, 0.9);
+      border: 2px solid rgba(15, 23, 42, 0.9);
     }
 
     .no-video {
@@ -211,13 +257,13 @@
       top: 8px;
       left: 8px;
       font-size: 0.7rem;
-      background: rgba(249, 250, 251, 0.9);
+      background: rgba(248, 250, 252, 0.98);
       color: #111827;
       padding: 2px 7px;
       border-radius: 999px;
       display: none;
       z-index: 2;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.6);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.7);
     }
 
     .admin-mode .admin-badge {
@@ -250,7 +296,7 @@
       gap: 4px;
       transition: transform 0.1s ease, box-shadow 0.1s ease,
         background 0.15s ease;
-      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.7);
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.8);
     }
 
     .btn span.icon {
@@ -258,7 +304,7 @@
     }
 
     .btn-edit {
-      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      background: linear-gradient(135deg, #4f46e5, #0ea5e9);
       color: #f9fafb;
     }
 
@@ -269,8 +315,8 @@
 
     .btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.8);
-      filter: brightness(1.03);
+      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.9);
+      filter: brightness(1.05);
     }
 
     /* 오른쪽 아래 관리자 플로팅 바 */
@@ -293,8 +339,8 @@
       cursor: pointer;
       background: radial-gradient(circle at 30% 20%, #facc15, #f97316);
       color: #111827;
-      font-weight: 600;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.95);
     }
 
     #admin-toggle.admin-on {
@@ -304,14 +350,14 @@
 
     #admin-info {
       font-size: 0.7rem;
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(15, 23, 42, 0.98);
       color: #e5e7eb;
       padding: 7px 10px;
       border-radius: 10px;
       max-width: 260px;
       display: none;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 1);
     }
 
     #admin-info.show {
@@ -326,7 +372,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.96);
       display: none;
       align-items: center;
       justify-content: center;
@@ -343,7 +389,7 @@
       background: #020617;
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.9);
       box-shadow: 0 24px 60px rgba(15, 23, 42, 1);
     }
 
@@ -366,8 +412,8 @@
       line-height: 1;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.95);
     }
 
     .modal-body {
@@ -389,20 +435,23 @@
       color: #6b7280;
       text-align: center;
       padding: 14px 8px 18px;
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
       margin-top: 10px;
       background: radial-gradient(circle at top, #020617, #020617);
     }
 
     @media (min-width: 768px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
       header p {
-        font-size: 1rem;
+        font-size: 0.98rem;
       }
       main {
         padding: 22px 18px 32px;
+      }
+      .game-title {
+        max-width: 130px;
       }
     }
   </style>
@@ -472,11 +521,11 @@
   </div>
 
   <footer>
-    &copy; <span id="year"></span> 무똑딱이 홍보영상. All rights reserved.
+    &copy; <span id="year"></span> 게임장 무똑딱이 홍보영상. All rights reserved.
   </footer>
 
   <script>
-    // ====== 1. 기본 게임 목록 (제목만 입력 / 영상은 빈 상태) ======
+    // ====== 1. 기본 게임 목록 ======
     const DEFAULT_POPULAR_GAMES = [
       { title: "한산", videoId: "" },
       { title: "레전드", videoId: "" },
@@ -501,8 +550,8 @@
       { title: "대서양", videoId: "" }
     ];
 
-    // ====== 2. 관리자 비밀번호 (여기서 변경 가능) ======
-    const ADMIN_PASSWORD = "0000";
+    // ====== 2. 관리자 비밀번호 ======
+    const ADMIN_PASSWORD = "2000";
 
     // ====== 3. localStorage 연동 ======
     function loadGames(key, defaultValue) {
@@ -515,7 +564,7 @@
       } catch (e) {
         console.warn("loadGames error:", e);
       }
-      return JSON.parse(JSON.stringify(defaultValue)); // 깊은 복사
+      return JSON.parse(JSON.stringify(defaultValue));
     }
 
     function saveGames(key, data) {
@@ -533,29 +582,25 @@
     function extractYouTubeId(input) {
       if (!input) return "";
       const trimmed = input.trim();
-
-      // 이미 짧은 ID 형태라면 그대로 사용 (8~16 글자)
       if (/^[a-zA-Z0-9_-]{8,16}$/.test(trimmed)) return trimmed;
-
       const reg =
         /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{8,16})/;
       const match = trimmed.match(reg);
       return match ? match[1] : trimmed;
     }
 
-    // ====== 5. 리스트 렌더링 ======
+    // ====== 5. 렌더링 ======
     const popularListEl = document.getElementById("popular-list");
     const specialListEl = document.getElementById("special-list");
     let isAdmin = false;
 
     function syncFromStorage() {
-      // 항상 최신 저장 내용과 동기화
       popularGames = loadGames("popularGames", popularGames);
       specialGames = loadGames("specialGames", specialGames);
     }
 
     function renderList() {
-      syncFromStorage(); // 수정 후에도 실시간 반영 되도록
+      syncFromStorage();
       document.body.classList.toggle("admin-mode", isAdmin);
       renderSection(popularListEl, popularGames, "popular");
       renderSection(specialListEl, specialGames, "special");
@@ -575,15 +620,21 @@
         const titleRow = document.createElement("div");
         titleRow.className = "game-title-row";
 
+        const titlePill = document.createElement("div");
+        titlePill.className = "game-title-pill";
+
         const title = document.createElement("div");
         title.className = "game-title";
         title.textContent = game.title || "제목 없음";
 
+        titlePill.appendChild(title);
+
         const pill = document.createElement("span");
         pill.className = "badge-pill";
-        pill.textContent = type === "popular" ? "인기" : "특가";
+        pill.innerHTML =
+          '<span class="dot"></span>' + (type === "popular" ? "인기" : "특가");
 
-        titleRow.appendChild(title);
+        titleRow.appendChild(titlePill);
         titleRow.appendChild(pill);
         card.appendChild(titleRow);
 
@@ -606,7 +657,6 @@
         thumb.appendChild(thumbInner);
         card.appendChild(thumb);
 
-        // 관리자 버튼
         const adminButtons = document.createElement("div");
         adminButtons.className = "admin-buttons";
 
@@ -628,7 +678,7 @@
       });
     }
 
-    // ====== 6. 썸네일 클릭 → 모달 재생 ======
+    // ====== 6. 썸네일 클릭 → 영상 모달 ======
     const modal = document.getElementById("video-modal");
     const modalIframe = document.getElementById("modal-iframe");
     const modalTitle = document.getElementById("modal-title");
@@ -666,7 +716,7 @@
       openModal(game.title, game.videoId);
     });
 
-    // ====== 7. 관리자 모드 토글 ======
+    // ====== 7. 관리자 모드 ======
     const adminToggle = document.getElementById("admin-toggle");
     const adminInfo = document.getElementById("admin-info");
 
@@ -701,13 +751,13 @@
         "게임 이름을 입력하세요:",
         game.title || ""
       );
-      if (newTitle === null) return; // 취소
+      if (newTitle === null) return;
 
       const newUrl = prompt(
         "YouTube 주소 또는 영상 ID를 입력하세요:",
         game.videoId || ""
       );
-      if (newUrl === null) return; // 취소
+      if (newUrl === null) return;
 
       const id = extractYouTubeId(newUrl);
 
@@ -716,9 +766,8 @@
         videoId: id
       };
 
-      // 저장 + 바로 다시 렌더링
       saveGames(key, list);
-      renderList(); // 실시간 반영
+      renderList();
     }
 
     function resetGame(type, index) {
