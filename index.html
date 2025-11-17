@@ -1,292 +1,601 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <title>🎮 게임 홍보 영상 모음</title>
-    <meta charset="UTF-8">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .subtitle {
-            color: #8892b0;
-            font-size: 1.1rem;
-        }
-        
-        .category {
-            margin-bottom: 60px;
-        }
-        
-        .category-title {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #4ecdc4;
-            display: inline-block;
-        }
-        
-        .new .category-title {
-            border-bottom-color: #ff6b6b;
-        }
-        
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-        
-        .game-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .game-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #4ecdc4;
-        }
-        
-        .new .game-card h3 {
-            color: #ff6b6b;
-        }
-        
-        .game-card p {
-            color: #8892b0;
-            line-height: 1.5;
-        }
-        
-        .play-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            margin-top: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .play-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-        
-        .youtube-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: red;
-            border-radius: 4px;
-            margin-right: 8px;
-            position: relative;
-        }
-        
-        .youtube-icon::after {
-            content: '▶';
-            color: white;
-            font-size: 10px;
-            position: absolute;
-            top: 50%;
-            left: 55%;
-            transform: translate(-50%, -50%);
-        }
-        
-        @media (max-width: 768px) {
-            .game-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>무똑딱이 홍보영상</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: #111;
+      color: #f5f5f5;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 16px;
+      text-align: center;
+      background: linear-gradient(135deg, #222, #333);
+      border-bottom: 1px solid #444;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    header p {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 4px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      border-left: 4px solid #f5c842;
+      padding-left: 8px;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .game-card {
+      background: #1b1b1b;
+      border-radius: 10px;
+      padding: 8px;
+      border: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    .game-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .thumb {
+      position: relative;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      padding-top: 56.25%; /* 16:9 */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #444;
+    }
+
+    .thumb-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    .play-icon {
+      font-size: 2.5rem;
+      opacity: 0.8;
+    }
+
+    .no-video {
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .admin-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.7rem;
+      background: #f5c842;
+      color: #111;
+      padding: 2px 6px;
+      border-radius: 999px;
+      display: none;
+    }
+
+    .admin-mode .admin-badge {
+      display: inline-block;
+    }
+
+    .admin-buttons {
+      display: none;
+      margin-top: 4px;
+      gap: 4px;
+    }
+
+    .admin-mode .admin-buttons {
+      display: flex;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      background: #333;
+      color: #eee;
+    }
+
+    .btn-edit {
+      background: #2b7cff;
+    }
+
+    .btn-reset {
+      background: #666;
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    #admin-bar {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 20;
+    }
+
+    #admin-toggle {
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: #f5c842;
+      color: #111;
+      font-weight: 600;
+    }
+
+    #admin-info {
+      font-size: 0.7rem;
+      background: rgba(0,0,0,0.8);
+      color: #ddd;
+      padding: 6px 8px;
+      border-radius: 8px;
+      max-width: 240px;
+      display: none;
+    }
+
+    #admin-info.show {
+      display: block;
+    }
+
+    /* 모달 */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      width: 95%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #444;
+    }
+
+    .modal-header {
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+    }
+
+    .modal-header h3 {
+      font-size: 0.9rem;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 0 4px;
+    }
+
+    .modal-body {
+      position: relative;
+      padding-top: 56.25%;
+      background: #000;
+    }
+
+    .modal-body iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    footer {
+      font-size: 0.7rem;
+      color: #777;
+      text-align: center;
+      padding: 12px;
+      border-top: 1px solid #333;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎮 게임 홍보 영상</h1>
-            <p class="subtitle">최신게임과 인기게임의 트레일러를 만나보세요</p>
-        </header>
-        
-        <!-- 최신게임 섹션 -->
-        <section class="category new">
-            <h2 class="category-title">🆕 최신게임</h2>
-            <div class="game-grid" id="new-games">
-                <!-- 여기에 최신게임들이 동적으로 로드됩니다 -->
-            </div>
-        </section>
-        
-        <!-- 인기게임 섹션 -->
-        <section class="category popular">
-            <h2 class="category-title">🔥 인기게임</h2>
-            <div class="game-grid" id="popular-games">
-                <!-- 여기에 인기게임들이 동적으로 로드됩니다 -->
-            </div>
-        </section>
+  <header>
+    <h1>무똑딱이 홍보영상</h1>
+    <p>유튜브에 올라온 게임 영상을 한 곳에서 모아서 보는 개인 홈페이지</p>
+  </header>
+
+  <main>
+    <!-- 인기게임 섹션 -->
+    <section id="popular-section">
+      <h2>인기게임</h2>
+      <p class="section-sub">한산, 레전드, 킹불새, 황금성K, 손행자, 태평양</p>
+      <div class="game-grid" id="popular-list">
+        <!-- JS로 자동 생성 -->
+      </div>
+    </section>
+
+    <!-- 특가게임 섹션 -->
+    <section id="special-section">
+      <h2>특가게임</h2>
+      <p class="section-sub">
+        고진감래, 불용5, 군함, 신비룡, 삼순이, 드래곤플라이, 슈퍼회오리2, 도채비, 아테네, 사천성, 요술램프, 대서양
+      </p>
+      <div class="game-grid" id="special-list">
+        <!-- JS로 자동 생성 -->
+      </div>
+    </section>
+  </main>
+
+  <!-- 관리자 버튼/정보 -->
+  <div id="admin-bar">
+    <button id="admin-toggle">관리자 로그인</button>
+    <div id="admin-info">
+      ● 관리자 모드에서 각 게임의 이름/유튜브 주소를<br />수정할 수 있습니다.<br />
+      ● 수정 내용은 이 브라우저의 <b>저장공간(localStorage)</b>에 저장됩니다.
     </div>
+  </div>
 
-    <script>
-        // Notion 대신 간단한 JSON 데이터로 관리
-        const games = [
-            {
-                name: "스타필드",
-                youtubeId: "dQlBgPjvBBg",
-                category: "new",
-                description: "Bethesda의 차세대 우주 RPG"
-            },
-            {
-                name: "파이널 판타지 VII 리버스",
-                youtubeId: "ZSRHeC6KLPw", 
-                category: "new",
-                description: "클래식 RPG의 리메이크"
-            },
-            {
-                name: "리그 오브 레전드",
-                youtubeId: "BGtROJeMPeE",
-                category: "popular", 
-                description: "세계 최고의 MOBA 게임"
-            },
-            {
-                name: "오버워치 2",
-                youtubeId: "GKXS_YA9s7E",
-                category: "popular",
-                description: "팀 기반 히어로 슈터"
-            },
-            {
-                name: "발로란트",
-                youtubeId: "e_E9W2vsRbQ",
-                category: "popular", 
-                description: "전략적 FPS의 신흥 강자"
-            },
-            {
-                name: "젤다의 전설: 티어스 오브 더 킹덤",
-                youtubeId: "uHGShqcAHlQ",
-                category: "new",
-                description: "하이랄을 구하러 떠나는 모험"
-            }
-        ];
+  <!-- 영상 모달 -->
+  <div class="modal-backdrop" id="video-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">영상 재생</h3>
+        <span class="modal-close" id="modal-close">✕</span>
+      </div>
+      <div class="modal-body">
+        <iframe
+          id="modal-iframe"
+          src=""
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
 
-        function loadGames() {
-            const newGamesContainer = document.getElementById('new-games');
-            const popularGamesContainer = document.getElementById('popular-games');
-            
-            // 기존 내용 비우기
-            newGamesContainer.innerHTML = '';
-            popularGamesContainer.innerHTML = '';
-            
-            games.forEach(game => {
-                const gameCard = createGameCard(game);
-                
-                if (game.category === 'new') {
-                    newGamesContainer.appendChild(gameCard);
-                } else {
-                    popularGamesContainer.appendChild(gameCard);
-                }
-            });
+  <footer>
+    &copy; <span id="year"></span> 무똑딱이 홍보영상. All rights reserved.
+  </footer>
+
+  <script>
+    // ====== 여기만 수정해도 게임 목록/아이디 변경 가능 ======
+    // 영상은 YouTube "주소 전체" 또는 "영상 ID" 둘 다 입력 가능
+    const DEFAULT_POPULAR_GAMES = [
+      { title: "한산", videoId: "" },
+      { title: "레전드", videoId: "" },
+      { title: "킹불새", videoId: "" },
+      { title: "황금성K", videoId: "" },
+      { title: "손행자", videoId: "" },
+      { title: "태평양", videoId: "" }
+    ];
+
+    const DEFAULT_SPECIAL_GAMES = [
+      { title: "고진감래", videoId: "" },
+      { title: "불용5", videoId: "" },
+      { title: "군함", videoId: "" },
+      { title: "신비룡", videoId: "" },
+      { title: "삼순이", videoId: "" },
+      { title: "드래곤플라이", videoId: "" },
+      { title: "슈퍼회오리2", videoId: "" },
+      { title: "도채비", videoId: "" },
+      { title: "아테네", videoId: "" },
+      { title: "사천성", videoId: "" },
+      { title: "요술램프", videoId: "" },
+      { title: "대서양", videoId: "" }
+    ];
+
+    // 관리자 비밀번호 (원하시는 값으로 변경 가능)
+    const ADMIN_PASSWORD = "0000";
+
+    // ====== localStorage 에서 불러오기 / 저장 ======
+    function loadGames(key, defaultValue) {
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved) {
+          return JSON.parse(saved);
+        }
+      } catch (e) {
+        console.warn("loadGames error:", e);
+      }
+      return defaultValue;
+    }
+
+    function saveGames(key, data) {
+      try {
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch (e) {
+        console.warn("saveGames error:", e);
+      }
+    }
+
+    let popularGames = loadGames("popularGames", DEFAULT_POPULAR_GAMES);
+    let specialGames = loadGames("specialGames", DEFAULT_SPECIAL_GAMES);
+
+    // ====== YouTube URL 또는 ID에서 ID 추출 ======
+    function extractYouTubeId(input) {
+      if (!input) return "";
+      // 이미 ID 같으면(11~15자 정도) 그냥 반환
+      if (/^[a-zA-Z0-9_-]{8,16}$/.test(input)) return input;
+
+      const reg =
+        /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{8,16})/;
+      const match = input.match(reg);
+      return match ? match[1] : input.trim();
+    }
+
+    // ====== 리스트 그리기 ======
+    const popularListEl = document.getElementById("popular-list");
+    const specialListEl = document.getElementById("special-list");
+
+    let isAdmin = false;
+
+    function renderList() {
+      document.body.classList.toggle("admin-mode", isAdmin);
+      renderSection(popularListEl, popularGames, "popular");
+      renderSection(specialListEl, specialGames, "special");
+    }
+
+    function renderSection(container, games, type) {
+      container.innerHTML = "";
+      games.forEach((game, index) => {
+        const card = document.createElement("div");
+        card.className = "game-card";
+
+        const badge = document.createElement("span");
+        badge.className = "admin-badge";
+        badge.textContent = "관리";
+        card.appendChild(badge);
+
+        const title = document.createElement("div");
+        title.className = "game-title";
+        title.textContent = game.title || "제목 없음";
+        card.appendChild(title);
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        thumb.dataset.type = type;
+        thumb.dataset.index = index;
+
+        const thumbInner = document.createElement("div");
+        thumbInner.className = "thumb-inner";
+
+        if (game.videoId) {
+          thumbInner.innerHTML =
+            '<span class="play-icon">▶</span>';
+        } else {
+          thumbInner.innerHTML =
+            '<div class="no-video">영상 주소 미등록<br><small>관리자 모드에서 등록하세요</small></div>';
         }
 
-        function createGameCard(game) {
-            const card = document.createElement('div');
-            card.className = 'game-card';
-            card.onclick = () => openYouTube(game.youtubeId);
-            
-            card.innerHTML = `
-                <h3>${game.name}</h3>
-                <p>${game.description}</p>
-                <button class="play-btn" onclick="event.stopPropagation(); openYouTube('${game.youtubeId}')">
-                    <span class="youtube-icon"></span>
-                    영상 보기
-                </button>
-            `;
-            
-            return card;
-        }
+        thumb.appendChild(thumbInner);
+        card.appendChild(thumb);
 
-        function openYouTube(videoId) {
-            // YouTube 영상 새 창에서 열기
-            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-            
-            // 또는 임베드된 영상으로 보기 (아래 코드 사용시)
-            // showVideoModal(videoId);
-        }
+        // 관리자 버튼
+        const adminButtons = document.createElement("div");
+        adminButtons.className = "admin-buttons";
 
-        // 모달로 영상 보기 (선택사항)
-        function showVideoModal(videoId) {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.9);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-            `;
-            
-            modal.innerHTML = `
-                <div style="position: relative; width: 80%; max-width: 800px;">
-                    <button onclick="this.parentElement.parentElement.remove()" 
-                            style="position: absolute; top: -40px; right: 0; background: red; color: white; border: none; padding: 10px; cursor: pointer;">
-                        닫기
-                    </button>
-                    <iframe width="100%" height="450" src="https://www.youtube.com/embed/${videoId}" 
-                            frameborder="0" allowfullscreen></iframe>
-                </div>
-            `;
-            
-            modal.onclick = (e) => {
-                if (e.target === modal) modal.remove();
-            };
-            
-            document.body.appendChild(modal);
-        }
+        const editBtn = document.createElement("button");
+        editBtn.className = "btn btn-edit";
+        editBtn.textContent = "수정";
+        editBtn.addEventListener("click", () =>
+          editGame(type, index)
+        );
 
-        // 페이지 로드시 게임 목록 불러오기
-        document.addEventListener('DOMContentLoaded', loadGames);
-    </script>
+        const resetBtn = document.createElement("button");
+        resetBtn.className = "btn btn-reset";
+        resetBtn.textContent = "초기화";
+        resetBtn.addEventListener("click", () =>
+          resetGame(type, index)
+        );
+
+        adminButtons.appendChild(editBtn);
+        adminButtons.appendChild(resetBtn);
+        card.appendChild(adminButtons);
+
+        container.appendChild(card);
+      });
+    }
+
+    // ====== 썸네일 클릭 -> 팝업 재생 ======
+    const modal = document.getElementById("video-modal");
+    const modalIframe = document.getElementById("modal-iframe");
+    const modalTitle = document.getElementById("modal-title");
+    const modalClose = document.getElementById("modal-close");
+
+    function openModal(title, videoId) {
+      if (!videoId) {
+        alert("영상 주소가 등록되어 있지 않습니다.");
+        return;
+      }
+      modalTitle.textContent = title;
+      modal.classList.add("show");
+      modalIframe.src =
+        "https://www.youtube.com/embed/" +
+        videoId +
+        "?autoplay=1";
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      modalIframe.src = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener("click", (e) => {
+      const thumb = e.target.closest(".thumb");
+      if (!thumb) return;
+
+      // 관리자 모드에서도 영상 재생 가능하게
+      const type = thumb.dataset.type;
+      const index = parseInt(thumb.dataset.index, 10);
+      const list = type === "popular" ? popularGames : specialGames;
+      const game = list[index];
+      openModal(game.title, game.videoId);
+    });
+
+    // ====== 관리자 모드 ======
+    const adminToggle = document.getElementById("admin-toggle");
+    const adminInfo = document.getElementById("admin-info");
+
+    adminToggle.addEventListener("click", () => {
+      if (!isAdmin) {
+        const input = prompt("관리자 비밀번호를 입력하세요:", "");
+        if (input === ADMIN_PASSWORD) {
+          isAdmin = true;
+          adminToggle.textContent = "관리자 모드 종료";
+          adminInfo.classList.add("show");
+          renderList();
+        } else {
+          alert("비밀번호가 올바르지 않습니다.");
+        }
+      } else {
+        isAdmin = false;
+        adminToggle.textContent = "관리자 로그인";
+        adminInfo.classList.remove("show");
+        renderList();
+      }
+    });
+
+    function editGame(type, index) {
+      const list = type === "popular" ? popularGames : specialGames;
+      const key = type === "popular" ? "popularGames" : "specialGames";
+      const game = list[index];
+
+      const newTitle = prompt(
+        "게임 이름을 입력하세요:",
+        game.title || ""
+      );
+      if (newTitle === null) return;
+
+      const newUrl = prompt(
+        "YouTube 주소 또는 영상 ID를 입력하세요:",
+        game.videoId || ""
+      );
+      if (newUrl === null) return;
+
+      const id = extractYouTubeId(newUrl);
+
+      list[index] = {
+        title: newTitle.trim() || "제목 없음",
+        videoId: id
+      };
+
+      saveGames(key, list);
+      renderList();
+    }
+
+    function resetGame(type, index) {
+      if (!confirm("이 게임을 기본값으로 되돌리시겠습니까?")) return;
+
+      let defaultList, list, key;
+      if (type === "popular") {
+        defaultList = DEFAULT_POPULAR_GAMES;
+        list = popularGames;
+        key = "popularGames";
+      } else {
+        defaultList = DEFAULT_SPECIAL_GAMES;
+        list = specialGames;
+        key = "specialGames";
+      }
+
+      if (defaultList[index]) {
+        list[index] = {
+          title: defaultList[index].title,
+          videoId: defaultList[index].videoId
+        };
+        saveGames(key, list);
+        renderList();
+      }
+    }
+
+    // ====== 초기 실행 ======
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+    renderList();
+  </script>
 </body>
 </html>
