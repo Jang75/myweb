@@ -2,37 +2,37 @@
   "popular": [
     {
       "title": "한산",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=hG9BZMIUoPc"
     },
     {
       "title": "레전드",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=NvwJiqlvgx8"
     },
     {
       "title": "킹불새",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=ZmREoALW18c"
     },
     {
       "title": "황금성K",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=6Rrx0iNyGQ4&t=38s"
     },
     {
       "title": "손행자",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=ECFWG_Wxcuc"
     },
     {
       "title": "태평양",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=b3kiTaCk40g"
     }
   ],
   "special": [
     {
       "title": "고진감래",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=sp1r9rOqHWM"
     },
     {
       "title": "불용5",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=yWpBrmS4qRI"
     },
     {
       "title": "군함",
@@ -44,31 +44,31 @@
     },
     {
       "title": "삼순이",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=4NGGL0bHTLw"
     },
     {
       "title": "드래곤플라이",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=V-h3L8uCIsg"
     },
     {
       "title": "슈퍼회오리2",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=xicvo7ayTyY"
     },
     {
       "title": "도채비",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=-s8NqEk661A"
     },
     {
       "title": "아테네",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=8e8VBzSe2Iw"
     },
     {
       "title": "사천성",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=9DXhV1QmmN8&t=6s"
     },
     {
       "title": "요술램프",
-      "youtube": ""
+      "youtube": "https://www.youtube.com/watch?v=y0XM3weVEkQ"
     },
     {
       "title": "대서양",
@@ -76,4 +76,5 @@
     }
   ]
 }
+
 
