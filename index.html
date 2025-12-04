@@ -3,130 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게임장닷컴 무똑딱이영상</title>
+    <title>무똑딱이게임  | 백 기사 010.7350.8836</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+            font-family: 'Malgun Gothic', 'Segoe UI', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+            background-color: #0f0f0f;
+            color: #f1f1f1;
         }
         
+        /* 헤더 */
+        .header {
+            background-color: #000;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: #ff0000;
+            font-size: 22px;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: #ff0000;
+            font-size: 28px;
+        }
+        
+        .notice {
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0000;
+            border-radius: 6px;
+            padding: 8px 15px;
+            font-size: 14px;
+            text-align: center;
+            margin: 10px 20px;
+        }
+        
+        /* 메인 레이아웃 */
         .container {
-            max-width: 100%;
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 20px;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #6a11cb 0%, #057001 100%);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        /* 카테고리 탭 스타일 */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-            background: white;
-            border-radius: 50px;
-            padding: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .tab {
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
+        /* 메인 비디오 영역 */
+        .main-video-area {
             flex: 1;
+            margin-right: 20px;
         }
         
-        .tab.active {
-            background: linear-gradient(135deg, #6a11cb 0%, #057001 100%);
-            color: white;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .tab:not(.active) {
-            color: #666;
-        }
-        
-        /* 비디오 그리드 스타일 */
-        .video-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        
-        .video-category {
-            display: none;
-        }
-        
-        .video-category.active {
-            display: block;
-        }
-        
-        .category-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            text-align: center;
-            color: #444;
-            font-weight: 600;
-        }
-        
-        .video-card {
-            background: white;
-            border-radius: 15px;
+        .main-video-container {
+            background-color: #000;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
         }
         
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-        }
-        
-        .video-wrapper {
+        .main-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 비율 */
-            height: 0;
-            overflow: hidden;
         }
-        
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .main-video-link {
+            display: block;
             width: 100%;
             height: 100%;
-            border: none;
+            position: relative;
+        }
+
+        .main-video-thumb {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .main-video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .main-play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+
+        .main-play-overlay i {
+            font-size: 70px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .main-play-overlay span {
+            font-size: 16px;
+            background: rgba(0,0,0,0.5);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        
+        .video-placeholder {
+            color: #aaa;
+            text-align: center;
+        }
+        
+        .video-placeholder i {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+            color: #ff0000;
         }
         
         .video-info {
@@ -134,373 +144,489 @@
         }
         
         .video-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
         }
         
         .video-description {
-            font-size: 0.9rem;
-            color: #666;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.5;
         }
         
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #777;
-            font-size: 0.9rem;
+        /* 사이드바 */
+        .sidebar {
+            width: 350px;
+            background-color: #0f0f0f;
         }
         
-        /* 태블릿 이상 크기에서 2열 레이아웃 */
-        @media (min-width: 768px) {
-            .video-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
+        .menu-buttons {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            overflow: hidden;
         }
         
-        /* 데스크탑에서 3열 레이아웃 */
-        @media (min-width: 1024px) {
-            .video-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
+        .menu-btn {
+            flex: 1;
+            padding: 12px 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .menu-btn.active {
+            background-color: #ff0000;
+            font-weight: bold;
+        }
+        
+        .menu-btn:hover {
+            background-color: #333;
+        }
+        
+        .video-list {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        /* 비디오 리스트 아이템 */
+        .video-item {
+            display: flex;
+            margin-bottom: 15px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s, border 0.2s;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-3px);
+            background-color: #222;
+        }
+        
+        .video-item.active {
+            border: 2px solid #ff0000;
+        }
+        
+        .thumbnail {
+            width: 160px;
+            height: 90px;
+            background-color: #333;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .video-item:hover .play-icon {
+            opacity: 1;
+        }
+        
+        .item-info {
+            padding: 10px;
+            flex: 1;
+        }
+        
+        .item-title {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #fff;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .item-type {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+
+        .current-info {
+            padding: 5px 0 0 5px;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 1024px) {
             .container {
-                max-width: 1200px;
-                margin: 0 auto;
+                flex-direction: column;
+                padding: 15px;
             }
+            
+            .main-video-area {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .video-list {
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 10px;
+            }
+            
+            .thumbnail {
+                width: 120px;
+                height: 70px;
+            }
+        }
+        
+        /* 스크롤바 스타일 */
+        .video-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .video-list::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        
+        .video-list::-webkit-scrollbar-thumb {
+            background: #ff0000;
+            border-radius: 4px;
+        }
+        
+        .video-list::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">🎮</div>
             <h1>무똑딱이 게임영상</h1>
-            <p class="subtitle">임대및판매 백기사 : 010-7350-8836 </p>
-        </header>
-        
-        <!-- 카테고리 탭 메뉴 -->
-        <div class="category-tabs">
-            <div class="tab active" data-category="latest">최신인기게임</div>
-            <div class="tab" data-category="special">특가인기게임</div>
         </div>
-        
-        <main>
-            <!-- 최신인기게임 카테고리 -->
-            <div class="video-category active" id="latest">
-                <h2 class="category-title">최신 인기게임</h2>
-                <div class="video-grid">
-                    <!-- 비디오 1 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/hG9BZMIUoPc" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">한 산</h3>
-                            <p class="video-description">백기사 010-7350-8836 </p>
-                        </div>
+        <div class="header-info">
+            <p>게임장.com 백기사 010.7350.8836</p>
+        </div>
+    </div>
+    
+    <div class="notice">
+        무똑딱이게임기 소개하는 페이지입니다.
+    </div>
+    
+    <div class="container">
+        <!-- 메인 비디오 영역 -->
+        <div class="main-video-area">
+            <div class="main-video-container">
+                <div class="main-video" id="mainVideoPlayer">
+                    <!-- 처음에는 랜덤 영상이 들어가므로 placeholder는 사용 X -->
+                    <div class="video-placeholder" id="videoPlaceholder">
+                        <i class="fas fa-play-circle"></i>
+                        <p>우측에서 영상을 선택하세요</p>
                     </div>
-                    
-                    <!-- 비디오 2 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/NvwJiqlvgx8" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">레 전 드</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 3 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/ZmREoALW18c" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">킹 불 새</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    <!-- 비디오 4 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/6Rrx0iNyGQ4&t=38s" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">황 금 성 K</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    <!-- 비디오 5 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/ECFWG_Wxcuc" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">손 행 자</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 6 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/b3kiTaCk40g"
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">태 평 양</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    
+                </div>
+                <div class="video-info">
+                    <h2 class="video-title" id="mainVideoTitle">영상 제목이 여기에 표시됩니다</h2>
+                    <p class="video-description" id="mainVideoDesc">영상을 선택하면 설명이 여기에 표시됩니다.</p>
                 </div>
             </div>
             
-            <!-- 특가인기게임 카테고리 -->
-            <div class="video-category" id="special">
-                <h2 class="category-title">특가인기게임</h2>
-                <div class="video-grid">
-                    <!-- 비디오 1 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/sp1r9rOqHWM"
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">고 진 감 래</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 2 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/yWpBrmS4qRI" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">불 용 5</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 3 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/XOVFIKZ4qZc" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">군 함</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    <!-- 비디오 4 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://youtube.com/embde/IrVmNJTWSck"
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">신 비 룡</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 5 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/4NGGL0bHTLw" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">삼 순 이</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 6 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/V-h3L8uCIsg" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">드래곤 플라이</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    <!-- 비디오 7 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/xicvo7ayTyY"
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">슈퍼회오리2</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 8 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/-s8NqEk661A" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">도 채 비</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 9 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/8e8VBzSe2Iw" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">아 테 네</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    <!-- 비디오 10 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://youtube.com/embed/9DXhV1QmmN8"
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">사 천 성</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 11 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/y0XM3weVEkQ" 
-                                    title="YouTube video player" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">요 술 램 프</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 비디오 12 -->
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <!-- 아래 src의 유튜브 링크만 변경하시면 됩니다 -->
-                            <iframe src="https://www.youtube.com/embed/ATewh_UcF1w" 
-        title="YouTube video player" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3 class="video-title">대 서 양</h3>
-                            <p class="video-description">백기사 010-7350-8836</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="current-info">
+                <p style="color: #aaa; font-size: 14px;">
+                    전체 <span id="currentCount">0</span>개 중 
+                    <span id="filteredCount">0</span>개 표시 중
+                </p>
             </div>
-        </main>
+        </div>
         
-        <footer>
-            <p>© 영등포유통상가 3바12호 백기사.</p>
-        </footer>
+        <!-- 사이드바 -->
+        <div class="sidebar">
+            <div class="menu-buttons">
+                <button class="menu-btn active" data-filter="all">전체 영상</button>
+                <button class="menu-btn" data-filter="popular">인기 게임</button>
+                <button class="menu-btn" data-filter="recommended">특가 게임</button>
+            </div>
+            
+            <div class="video-list" id="videoList">
+                <!-- 비디오 목록이 여기에 동적으로 생성됩니다 -->
+            </div>
+        </div>
     </div>
 
     <script>
-        // 카테고리 탭 전환 기능
+        // 게임 영상 데이터
+        // youtubeId에는 "https://www.youtube.com/watch?v=여기" 의 v= 뒤 **영상ID만** 넣으시면 됩니다.
+        const gameVideos = [
+            { 
+                id: 1, 
+                title: "한 산 <br>[백기사] 010.7350.8836", 
+                youtubeId: "sQR13GfDlEM",
+                type: "popular", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 2, 
+                title: "군 함<br> [백기사] 010.7350.8836", 
+                youtubeId: "XOVFIKZ4qZc",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            // ★ 여기부터 youtubeId에 &t=1s 같은 거 빼고 '순수 ID'만 넣어주세요 ★
+            { 
+                id: 3, 
+                title: "신 비 룡<br>  [백기사] 010.7350.8836", 
+                youtubeId: "IrVmNJTWSck",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 4, 
+                title: "레전드오브히어로 <br>[백기사] 010.7350.8836", 
+                youtubeId: "NvwJiqlvgx8",   // NvwJiqlvgx8&t=1s → NvwJiqlvgx8
+                type: "popular", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 5, 
+                title: "킹 불 새 <br>[백기사] 010.7350.8836", 
+                youtubeId: "ZmREoALW18c",   // ZmREoALW18c&t=1s → ZmREoALW18c
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 6, 
+                title: "뉴 황금성K<br> [백기사] 010.7350.8836", 
+                youtubeId: "6Rrx0iNyGQ4",
+                type: "popular", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 7, 
+                title: "태 평 양 <br>[백기사] 010.7350.8836", 
+                youtubeId: "b3kiTaCk40g",   // b3kiTaCk40g&t=2s → b3kiTaCk40g
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 8, 
+                title: "고진감래 <br>[백기사] 010.7350.8836", 
+                youtubeId: "sp1r9rOqHWM",   // sp1r9rOqHWM&t=1s → sp1r9rOqHWM
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 9, 
+                title: "불 용 5 <br>[백기사] 010.7350.8836", 
+                youtubeId: "yWpBrmS4qRI",   // yWpBrmS4qRI&t=1s → yWpBrmS4qRI
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 10, 
+                title: "삼 순 이 <br>[백기사] 010.7350.8836", 
+                youtubeId: "4NGGL0bHTLw",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 11, 
+                title: "드래곤플라이<br>[백기사] 010.7350.8836", 
+                youtubeId: "V-h3L8uCIsg",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 12, 
+                title: "슈퍼회오리2<br> [백기사] 010.7350.8836", 
+                youtubeId: "xicvo7ayTyY",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 13, 
+                title: "아 테 네<br> [백기사] 010.7350.8836", 
+                youtubeId: "8e8VBzSe2Iw",   // 8e8VBzSe2Iw&t=1s → 8e8VBzSe2Iw
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 14, 
+                title: "도 채 비<br> [백기사] 010.7350.8836", 
+                youtubeId: "-s8NqEk661A",   // -s8NqEk661A&t=2s → -s8NqEk661A
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 15, 
+                title: "사 천 성 <br>[백기사] 010.7350.8836 ", 
+                youtubeId: "9DXhV1QmmN8",   // 9DXhV1QmmN8&t=4s → 9DXhV1QmmN8
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 16, 
+                title: "요술램프<br> [백기사] 010.7350.8836", 
+                youtubeId: "y0XM3weVEkQ",
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            },
+            { 
+                id: 17, 
+                title: "대 서 양 <br>[백기사] 010.7350.8836", 
+                youtubeId: "ATewh_UcF1w",   // ATewh_UcF1w&t=1s → ATewh_UcF1w
+                type: "recommended", 
+                desc: "백기사 010.7350.8836"
+            }
+        ];
+
+        // DOM 요소
+        const videoListElement = document.getElementById('videoList');
+        const mainVideoPlayer = document.getElementById('mainVideoPlayer');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const mainVideoTitle = document.getElementById('mainVideoTitle');
+        const mainVideoDesc = document.getElementById('mainVideoDesc');
+        const menuButtons = document.querySelectorAll('.menu-btn');
+        const currentCountElement = document.getElementById('currentCount');
+        const filteredCountElement = document.getElementById('filteredCount');
+        
+        let currentFilter = 'all';
+        let activeVideoId = null;
+        
+        // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const categories = document.querySelectorAll('.video-category');
+            if (gameVideos.length === 0) return;
+
+            // 전체 개수 (기본은 전체 영상 기준)
+            currentCountElement.textContent = gameVideos.length;
             
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // 모든 탭 비활성화
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // 클릭한 탭 활성화
-                    this.classList.add('active');
-                    
-                    // 모든 카테고리 숨기기
-                    categories.forEach(category => {
-                        category.classList.remove('active');
-                    });
-                    
-                    // 선택한 카테고리 표시
-                    const categoryId = this.getAttribute('data-category');
-                    document.getElementById(categoryId).classList.add('active');
+            // ★ 첫 페이지에서 랜덤 영상 선택 ★
+            const randomIndex = Math.floor(Math.random() * gameVideos.length);
+            loadVideo(gameVideos[randomIndex]);
+        });
+        
+        // 현재 필터에 맞는 전체 목록
+        function getFilteredVideos() {
+            if (currentFilter === 'all') return gameVideos;
+            return gameVideos.filter(video => video.type === currentFilter);
+        }
+
+        // 영상 목록 렌더링 함수 (필터된 영상 전부 표시)
+        function renderVideoList() {
+            videoListElement.innerHTML = '';
+            
+            const filteredVideos = getFilteredVideos();
+            
+            filteredVideos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = `video-item ${activeVideoId === video.id ? 'active' : ''}`;
+                videoItem.dataset.id = video.id;
+                
+                const thumbnailUrl = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+                
+                videoItem.innerHTML = `
+                    <div class="thumbnail">
+                        <img src="${thumbnailUrl}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/160x90/333/fff?text=Thumbnail'">
+                        <div class="play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="item-info">
+                        <div class="item-type">${video.type === 'popular' ? '인기 게임' : '추천 게임'}</div>
+                        <div class="item-title">${video.title}</div>
+                    </div>
+                `;
+                
+                // 클릭 이벤트: 메인 플레이어 업데이트
+                videoItem.addEventListener('click', () => {
+                    loadVideo(video);
                 });
+                
+                videoListElement.appendChild(videoItem);
+            });
+
+            updateFilteredCount();
+        }
+        
+        // 영상 로드 함수 (임베드 대신 썸네일 + 유튜브 링크)
+        function loadVideo(video) {
+            activeVideoId = video.id;
+
+            if (videoPlaceholder) {
+                videoPlaceholder.remove();
+            }
+
+            const thumbUrl = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+
+            mainVideoPlayer.innerHTML = `
+                <a href="https://www.youtube.com/watch?v=${video.youtubeId}" 
+                   target="_blank" 
+                   class="main-video-link">
+                    <div class="main-video-thumb">
+                        <img src="${thumbUrl}" alt="${video.title}" 
+                             onerror="this.src='https://via.placeholder.com/640x360/333/fff?text=No+Image'">
+                        <div class="main-play-overlay">
+                            <i class="fas fa-play-circle"></i>
+                            <span>유튜브에서 재생</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+            
+            mainVideoTitle.innerHTML = video.title;
+            mainVideoDesc.textContent = video.desc;
+            
+            renderVideoList();
+        }
+        
+        // 메뉴 버튼 클릭 이벤트
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                menuButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentFilter = this.dataset.filter;
+                
+                renderVideoList();
             });
         });
+        
+        // 개수 표시 업데이트
+        function updateFilteredCount() {
+            const filteredVideos = getFilteredVideos();
+            currentCountElement.textContent = filteredVideos.length; // 현재 필터의 전체 개수
+            filteredCountElement.textContent = filteredVideos.length; // 화면에 보이는 개수(전부)
+        }
     </script>
 </body>
-
 </html>
