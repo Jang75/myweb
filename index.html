@@ -74,7 +74,7 @@
         
         /* 메인 비디오 영역 */
         .main-video-area {
-            flex: 2; /* PC에서 더 넓게 */
+            flex: 2;
         }
         
         .main-video-container {
@@ -154,7 +154,6 @@
             background-color: #0f0f0f;
         }
         
-        /* 필터 버튼 (PC 스타일) */
         .menu-buttons {
             display: flex;
             margin-bottom: 20px;
@@ -183,7 +182,6 @@
             background-color: #333;
         }
         
-        /* 비디오 리스트 (PC 스타일) */
         .video-list {
             max-height: 80vh;
             overflow-y: auto;
@@ -285,6 +283,46 @@
         }
 
         /* -------------------------------------------------------- */
+        /* ★★★ [신규] 전화걸기 플로팅 버튼 스타일 ★★★ */
+        /* -------------------------------------------------------- */
+        .call-btn-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 65px;
+            height: 65px;
+            background-color: #00c853; /* 통화 상징 초록색 */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            z-index: 9999; /* 제일 위에 뜨도록 */
+            text-decoration: none;
+            animation: pulse 2s infinite; /* 두근거리는 효과 */
+            transition: transform 0.3s;
+        }
+
+        .call-btn-fixed:hover {
+            transform: scale(1.1);
+        }
+
+        /* 두근두근 애니메이션 정의 */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 200, 83, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+            }
+        }
+
+        /* -------------------------------------------------------- */
         /* ★★★ 모바일 전용 스타일 (스마트폰용 UI) ★★★ */
         /* -------------------------------------------------------- */
         @media (max-width: 768px) {
@@ -304,16 +342,15 @@
             }
 
             .container {
-                flex-direction: column; /* 세로 배치 */
-                padding: 0; /* 전체 여백 제거 (앱 느낌) */
+                flex-direction: column;
+                padding: 0;
                 gap: 0;
             }
 
-            /* 메인 플레이어 영역 */
             .main-video-area {
                 width: 100%;
                 margin-right: 0;
-                position: relative; /* 고정하지 않고 흐름대로 */
+                position: relative;
                 background: #0f0f0f;
                 padding-bottom: 10px;
                 border-bottom: 1px solid #333;
@@ -321,7 +358,7 @@
             }
 
             .main-video-container {
-                border-radius: 0; /* 둥근 모서리 제거 (앱처럼) */
+                border-radius: 0;
                 margin-bottom: 10px;
                 box-shadow: none;
             }
@@ -339,53 +376,49 @@
                 margin-bottom: 10px;
             }
 
-            /* 사이드바 (리스트 영역) */
             .sidebar {
                 width: 100%;
                 background-color: #0f0f0f;
             }
 
-            /* 필터 버튼 (알약 모양으로 변경) */
             .menu-buttons {
                 background: transparent;
                 border-radius: 0;
                 margin: 10px 15px 15px 15px;
-                overflow-x: auto; /* 가로 스크롤 가능하게 */
+                overflow-x: auto;
                 white-space: nowrap;
                 display: flex;
                 gap: 8px;
-                padding-bottom: 5px; /* 스크롤바 공간 확보 */
+                padding-bottom: 5px;
             }
 
             .menu-btn {
-                flex: none; /* 늘어나지 않게 */
+                flex: none;
                 padding: 8px 16px;
                 background-color: #222;
                 border: 1px solid #333;
-                border-radius: 20px; /* 알약 모양 */
+                border-radius: 20px;
                 font-size: 14px;
                 color: #fff;
             }
 
             .menu-btn.active {
-                background-color: #fff; /* 유튜브 활성 스타일 */
+                background-color: #fff;
                 color: #000;
                 border-color: #fff;
                 font-weight: 600;
             }
 
-            /* 비디오 리스트 (스크롤 제한 해제 & 카드형 변환) */
             .video-list {
-                max-height: none; /* 전체 페이지 스크롤 사용 */
+                max-height: none;
                 overflow-y: visible;
-                padding: 0 15px 30px 15px; /* 좌우 여백 */
+                padding: 0 15px 80px 15px; /* 전화버튼 공간 확보를 위해 하단 여백 추가 */
             }
 
-            /* ★ 카드형 디자인 핵심 ★ */
             .video-item {
-                flex-direction: column; /* 썸네일 위, 텍스트 아래 */
-                background-color: transparent; /* 배경 투명하게 */
-                margin-bottom: 25px; /* 아이템 간 간격 넓힘 */
+                flex-direction: column;
+                background-color: transparent;
+                margin-bottom: 25px;
                 border-radius: 0;
             }
 
@@ -395,32 +428,31 @@
             }
             
             .video-item.active {
-                border: none; /* 선택 테두리 제거 */
+                border: none;
             }
             .video-item.active .item-title {
-                color: #ff0000; /* 대신 제목 색상으로 표시 */
+                color: #ff0000;
             }
 
-            /* 큰 썸네일 */
             .thumbnail {
-                width: 100%; /* 화면 꽉 차게 */
-                height: auto; /* 비율 유지 */
+                width: 100%;
+                height: auto;
                 aspect-ratio: 16/9;
-                border-radius: 8px; /* 썸네일 자체 둥글게 */
+                border-radius: 8px;
                 margin-bottom: 10px;
             }
 
             .play-icon {
-                font-size: 40px; /* 아이콘 키우기 */
-                opacity: 0.8; /* 모바일은 호버가 없으므로 항상 보이게 */
+                font-size: 40px;
+                opacity: 0.8;
             }
 
             .item-info {
-                padding: 0 5px; /* 텍스트 여백 */
+                padding: 0 5px;
             }
 
             .item-title {
-                font-size: 16px; /* 글자 크기 확대 */
+                font-size: 16px;
                 line-height: 1.4;
                 margin-bottom: 8px;
             }
@@ -476,13 +508,17 @@
         </div>
     </div>
 
+    <a href="tel:01073508836" class="call-btn-fixed">
+        <i class="fas fa-phone"></i>
+    </a>
+
     <script>
-        // --- 데이터 및 로직은 기존과 동일 ---
+        // --- 기존 스크립트 그대로 유지 ---
         const gameVideos = [
-            { id: 1, title: "한 산 <br>[백기사] 010.7350.8836", youtubeId: "sQR13GfDlEM", type: "popular", desc: "백기사 010.7350.8836" },
+            { id: 1, title: "여우비 <br>[백기사] 010.7350.8836", youtubeId: "8gv6TVuUZ5M", type: "recommended", desc: "백기사 010.7350.8836" },
             { id: 2, title: "군 함<br> [백기사] 010.7350.8836", youtubeId: "XOVFIKZ4qZc", type: "recommended", desc: "백기사 010.7350.8836" },
             { id: 3, title: "신 비 룡<br> [백기사] 010.7350.8836", youtubeId: "IrVmNJTWSck", type: "recommended", desc: "백기사 010.7350.8836" },
-            { id: 4, title: "레전드오브히어로 <br>[백기사] 010.7350.8836", youtubeId: "NvwJiqlvgx8", type: "popular", desc: "백기사 010.7350.8836" },
+            { id: 4, title: "신 손오공포커  <br>[백기사] 010.7350.8836", youtubeId: "9k5otGlzlTo", type: "recommended", desc: "백기사 010.7350.8836" },
             { id: 5, title: "킹 불 새 <br>[백기사] 010.7350.8836", youtubeId: "ZmREoALW18c", type: "recommended", desc: "백기사 010.7350.8836" },
             { id: 6, title: "뉴 황금성K<br> [백기사] 010.7350.8836", youtubeId: "6Rrx0iNyGQ4", type: "popular", desc: "백기사 010.7350.8836" },
             { id: 7, title: "태 평 양 <br>[백기사] 010.7350.8836", youtubeId: "b3kiTaCk40g", type: "recommended", desc: "백기사 010.7350.8836" },
@@ -546,7 +582,6 @@
                 
                 videoItem.addEventListener('click', () => {
                     loadVideo(video);
-                    // 모바일에서 클릭 시 맨 위 플레이어로 부드럽게 스크롤 이동
                     if (window.innerWidth <= 768) {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
