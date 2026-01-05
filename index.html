@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>무똑딱이게임  | 백 기사 010.7350.8836</title>
+    <title>무똑딱이게임 | 백 기사 010.7350.8836</title>
     <style>
+        /* --- 공통 기본 스타일 (PC 기준) --- */
         * {
             margin: 0;
             padding: 0;
@@ -25,6 +26,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .logo {
@@ -36,18 +40,24 @@
             color: #ff0000;
             font-size: 22px;
             margin-left: 10px;
+            font-weight: 800;
         }
         
         .logo-icon {
             color: #ff0000;
             font-size: 28px;
         }
+
+        .header-info p {
+            font-size: 14px;
+            color: #ccc;
+        }
         
         .notice {
             background-color: rgba(255, 0, 0, 0.1);
             border: 1px solid #ff0000;
             border-radius: 6px;
-            padding: 8px 15px;
+            padding: 10px 15px;
             font-size: 14px;
             text-align: center;
             margin: 10px 20px;
@@ -59,39 +69,31 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            gap: 20px;
         }
         
         /* 메인 비디오 영역 */
         .main-video-area {
-            flex: 1;
-            margin-right: 20px;
+            flex: 2; /* PC에서 더 넓게 */
         }
         
         .main-video-container {
             background-color: #000;
             border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         
         .main-video {
             width: 100%;
             aspect-ratio: 16/9;
-            background-color: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #000;
             position: relative;
         }
 
-        .main-video-link {
+        .main-video-link, .main-video-thumb {
             display: block;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .main-video-thumb {
             width: 100%;
             height: 100%;
             position: relative;
@@ -101,7 +103,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
         .main-play-overlay {
@@ -111,56 +112,49 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: #fff;
-            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            pointer-events: none;
         }
 
         .main-play-overlay i {
             font-size: 70px;
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 15px;
+            color: rgba(255, 0, 0, 0.9);
         }
 
         .main-play-overlay span {
-            font-size: 16px;
-            background: rgba(0,0,0,0.5);
-            padding: 6px 12px;
-            border-radius: 20px;
-        }
-        
-        .video-placeholder {
-            color: #aaa;
-            text-align: center;
-        }
-        
-        .video-placeholder i {
-            font-size: 60px;
-            margin-bottom: 15px;
-            display: block;
-            color: #ff0000;
+            font-size: 18px;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
         }
         
         .video-info {
-            padding: 15px;
+            padding: 20px;
         }
         
         .video-title {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 10px;
             color: #fff;
+            line-height: 1.3;
         }
         
         .video-description {
             color: #aaa;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
         }
         
-        /* 사이드바 */
+        /* 사이드바 (리스트 영역) */
         .sidebar {
-            width: 350px;
+            flex: 1;
+            min-width: 350px;
             background-color: #0f0f0f;
         }
         
+        /* 필터 버튼 (PC 스타일) */
         .menu-buttons {
             display: flex;
             margin-bottom: 20px;
@@ -175,7 +169,7 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -189,13 +183,13 @@
             background-color: #333;
         }
         
+        /* 비디오 리스트 (PC 스타일) */
         .video-list {
-            max-height: 70vh;
+            max-height: 80vh;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 5px;
         }
         
-        /* 비디오 리스트 아이템 */
         .video-item {
             display: flex;
             margin-bottom: 15px;
@@ -203,12 +197,12 @@
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s, border 0.2s;
+            transition: transform 0.2s, background-color 0.2s;
         }
         
         .video-item:hover {
-            transform: translateY(-3px);
-            background-color: #222;
+            transform: translateY(-2px);
+            background-color: #2a2a2a;
         }
         
         .video-item.active {
@@ -228,18 +222,19 @@
             height: 100%;
             object-fit: cover;
         }
-        
+
         .play-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: rgba(255, 255, 255, 0.8);
+            color: #fff;
             font-size: 24px;
             opacity: 0;
             transition: opacity 0.3s;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
         }
-        
+
         .video-item:hover .play-icon {
             opacity: 1;
         }
@@ -247,12 +242,16 @@
         .item-info {
             padding: 10px;
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .item-title {
             font-size: 14px;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #fff;
+            line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -266,68 +265,169 @@
             font-size: 11px;
             padding: 2px 6px;
             border-radius: 3px;
-            margin-bottom: 5px;
+            align-self: flex-start;
+            margin-bottom: 4px;
         }
 
-        .current-info {
-            padding: 5px 0 0 5px;
-        }
-
-        /* 반응형 디자인 */
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-                padding: 15px;
-            }
-            
-            .main-video-area {
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .sidebar {
-                width: 100%;
-            }
-            
-            .video-list {
-                max-height: 400px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-            }
-            
-            .logo {
-                margin-bottom: 10px;
-            }
-            
-            .thumbnail {
-                width: 120px;
-                height: 70px;
-            }
-        }
-        
-        /* 스크롤바 스타일 */
-        .video-list::-webkit-scrollbar {
+        /* 스크롤바 커스텀 */
+        ::-webkit-scrollbar {
             width: 8px;
         }
-        
-        .video-list::-webkit-scrollbar-track {
+        ::-webkit-scrollbar-track {
             background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
             border-radius: 4px;
         }
-        
-        .video-list::-webkit-scrollbar-thumb {
+        ::-webkit-scrollbar-thumb:hover {
             background: #ff0000;
-            border-radius: 4px;
         }
-        
-        .video-list::-webkit-scrollbar-thumb:hover {
-            background: #cc0000;
+
+        /* -------------------------------------------------------- */
+        /* ★★★ 모바일 전용 스타일 (스마트폰용 UI) ★★★ */
+        /* -------------------------------------------------------- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 15px;
+            }
+            .header-info p {
+                font-size: 12px;
+            }
+            
+            .notice {
+                margin: 0;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                font-size: 13px;
+            }
+
+            .container {
+                flex-direction: column; /* 세로 배치 */
+                padding: 0; /* 전체 여백 제거 (앱 느낌) */
+                gap: 0;
+            }
+
+            /* 메인 플레이어 영역 */
+            .main-video-area {
+                width: 100%;
+                margin-right: 0;
+                position: relative; /* 고정하지 않고 흐름대로 */
+                background: #0f0f0f;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #333;
+                z-index: 10;
+            }
+
+            .main-video-container {
+                border-radius: 0; /* 둥근 모서리 제거 (앱처럼) */
+                margin-bottom: 10px;
+                box-shadow: none;
+            }
+            
+            .video-info {
+                padding: 10px 15px;
+            }
+            
+            .video-title {
+                font-size: 18px;
+            }
+
+            .current-info {
+                padding: 0 15px;
+                margin-bottom: 10px;
+            }
+
+            /* 사이드바 (리스트 영역) */
+            .sidebar {
+                width: 100%;
+                background-color: #0f0f0f;
+            }
+
+            /* 필터 버튼 (알약 모양으로 변경) */
+            .menu-buttons {
+                background: transparent;
+                border-radius: 0;
+                margin: 10px 15px 15px 15px;
+                overflow-x: auto; /* 가로 스크롤 가능하게 */
+                white-space: nowrap;
+                display: flex;
+                gap: 8px;
+                padding-bottom: 5px; /* 스크롤바 공간 확보 */
+            }
+
+            .menu-btn {
+                flex: none; /* 늘어나지 않게 */
+                padding: 8px 16px;
+                background-color: #222;
+                border: 1px solid #333;
+                border-radius: 20px; /* 알약 모양 */
+                font-size: 14px;
+                color: #fff;
+            }
+
+            .menu-btn.active {
+                background-color: #fff; /* 유튜브 활성 스타일 */
+                color: #000;
+                border-color: #fff;
+                font-weight: 600;
+            }
+
+            /* 비디오 리스트 (스크롤 제한 해제 & 카드형 변환) */
+            .video-list {
+                max-height: none; /* 전체 페이지 스크롤 사용 */
+                overflow-y: visible;
+                padding: 0 15px 30px 15px; /* 좌우 여백 */
+            }
+
+            /* ★ 카드형 디자인 핵심 ★ */
+            .video-item {
+                flex-direction: column; /* 썸네일 위, 텍스트 아래 */
+                background-color: transparent; /* 배경 투명하게 */
+                margin-bottom: 25px; /* 아이템 간 간격 넓힘 */
+                border-radius: 0;
+            }
+
+            .video-item:hover {
+                background-color: transparent;
+                transform: none;
+            }
+            
+            .video-item.active {
+                border: none; /* 선택 테두리 제거 */
+            }
+            .video-item.active .item-title {
+                color: #ff0000; /* 대신 제목 색상으로 표시 */
+            }
+
+            /* 큰 썸네일 */
+            .thumbnail {
+                width: 100%; /* 화면 꽉 차게 */
+                height: auto; /* 비율 유지 */
+                aspect-ratio: 16/9;
+                border-radius: 8px; /* 썸네일 자체 둥글게 */
+                margin-bottom: 10px;
+            }
+
+            .play-icon {
+                font-size: 40px; /* 아이콘 키우기 */
+                opacity: 0.8; /* 모바일은 호버가 없으므로 항상 보이게 */
+            }
+
+            .item-info {
+                padding: 0 5px; /* 텍스트 여백 */
+            }
+
+            .item-title {
+                font-size: 16px; /* 글자 크기 확대 */
+                line-height: 1.4;
+                margin-bottom: 8px;
+            }
+            
+            .item-type {
+                margin-bottom: 6px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -339,7 +439,7 @@
             <h1>무똑딱이 게임영상</h1>
         </div>
         <div class="header-info">
-            <p>게임장.com 백기사 010.7350.8836</p>
+            <p>백기사 010.7350.8836</p>
         </div>
     </div>
     
@@ -348,181 +448,59 @@
     </div>
     
     <div class="container">
-        <!-- 메인 비디오 영역 -->
         <div class="main-video-area">
             <div class="main-video-container">
                 <div class="main-video" id="mainVideoPlayer">
-                    <!-- 처음에는 랜덤 영상이 들어가므로 placeholder는 사용 X -->
-                    <div class="video-placeholder" id="videoPlaceholder">
-                        <i class="fas fa-play-circle"></i>
-                        <p>우측에서 영상을 선택하세요</p>
                     </div>
-                </div>
-                <div class="video-info">
-                    <h2 class="video-title" id="mainVideoTitle">영상 제목이 여기에 표시됩니다</h2>
-                    <p class="video-description" id="mainVideoDesc">영상을 선택하면 설명이 여기에 표시됩니다.</p>
-                </div>
             </div>
             
-            <div class="current-info">
-                <p style="color: #aaa; font-size: 14px;">
-                    전체 <span id="currentCount">0</span>개 중 
+            <div class="video-info">
+                <h2 class="video-title" id="mainVideoTitle">...</h2>
+                <p class="video-description" id="mainVideoDesc">...</p>
+                <div class="current-info" style="margin-top:10px; color:#666; font-size:13px;">
+                    총 <span id="currentCount">0</span>개 / 
                     <span id="filteredCount">0</span>개 표시 중
-                </p>
+                </div>
             </div>
         </div>
         
-        <!-- 사이드바 -->
         <div class="sidebar">
             <div class="menu-buttons">
-                <button class="menu-btn active" data-filter="all">전체 영상</button>
+                <button class="menu-btn active" data-filter="all">전체</button>
                 <button class="menu-btn" data-filter="popular">인기 게임</button>
-                <button class="menu-btn" data-filter="recommended">특가 게임</button>
+                <button class="menu-btn" data-filter="recommended">추천 게임</button>
             </div>
             
             <div class="video-list" id="videoList">
-                <!-- 비디오 목록이 여기에 동적으로 생성됩니다 -->
-            </div>
+                </div>
         </div>
     </div>
 
     <script>
-        // 게임 영상 데이터
-        // youtubeId에는 "https://www.youtube.com/watch?v=여기" 의 v= 뒤 **영상ID만** 넣으시면 됩니다.
+        // --- 데이터 및 로직은 기존과 동일 ---
         const gameVideos = [
-            { 
-                id: 1, 
-                title: "한 산 <br>[백기사] 010.7350.8836", 
-                youtubeId: "sQR13GfDlEM",
-                type: "popular", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 2, 
-                title: "군 함<br> [백기사] 010.7350.8836", 
-                youtubeId: "XOVFIKZ4qZc",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            // ★ 여기부터 youtubeId에 &t=1s 같은 거 빼고 '순수 ID'만 넣어주세요 ★
-            { 
-                id: 3, 
-                title: "신 비 룡<br>  [백기사] 010.7350.8836", 
-                youtubeId: "IrVmNJTWSck",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 4, 
-                title: "레전드오브히어로 <br>[백기사] 010.7350.8836", 
-                youtubeId: "NvwJiqlvgx8",   // NvwJiqlvgx8&t=1s → NvwJiqlvgx8
-                type: "popular", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 5, 
-                title: "킹 불 새 <br>[백기사] 010.7350.8836", 
-                youtubeId: "ZmREoALW18c",   // ZmREoALW18c&t=1s → ZmREoALW18c
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 6, 
-                title: "뉴 황금성K<br> [백기사] 010.7350.8836", 
-                youtubeId: "6Rrx0iNyGQ4",
-                type: "popular", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 7, 
-                title: "태 평 양 <br>[백기사] 010.7350.8836", 
-                youtubeId: "b3kiTaCk40g",   // b3kiTaCk40g&t=2s → b3kiTaCk40g
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 8, 
-                title: "고진감래 <br>[백기사] 010.7350.8836", 
-                youtubeId: "sp1r9rOqHWM",   // sp1r9rOqHWM&t=1s → sp1r9rOqHWM
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 9, 
-                title: "불 용 5 <br>[백기사] 010.7350.8836", 
-                youtubeId: "yWpBrmS4qRI",   // yWpBrmS4qRI&t=1s → yWpBrmS4qRI
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 10, 
-                title: "삼 순 이 <br>[백기사] 010.7350.8836", 
-                youtubeId: "4NGGL0bHTLw",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 11, 
-                title: "드래곤플라이<br>[백기사] 010.7350.8836", 
-                youtubeId: "V-h3L8uCIsg",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 12, 
-                title: "슈퍼회오리2<br> [백기사] 010.7350.8836", 
-                youtubeId: "xicvo7ayTyY",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 13, 
-                title: "아 테 네<br> [백기사] 010.7350.8836", 
-                youtubeId: "8e8VBzSe2Iw",   // 8e8VBzSe2Iw&t=1s → 8e8VBzSe2Iw
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 14, 
-                title: "도 채 비<br> [백기사] 010.7350.8836", 
-                youtubeId: "-s8NqEk661A",   // -s8NqEk661A&t=2s → -s8NqEk661A
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 15, 
-                title: "사 천 성 <br>[백기사] 010.7350.8836 ", 
-                youtubeId: "9DXhV1QmmN8",   // 9DXhV1QmmN8&t=4s → 9DXhV1QmmN8
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 16, 
-                title: "요술램프<br> [백기사] 010.7350.8836", 
-                youtubeId: "y0XM3weVEkQ",
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 18, 
-                title: "오 공 주 <br>[백기사] 010.7350.8836 ", 
-                youtubeId: "ApG2xnSK7pY",   // 9DXhV1QmmN8&t=4s → 9DXhV1QmmN8
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            },
-            { 
-                id: 17, 
-                title: "대 서 양 <br>[백기사] 010.7350.8836", 
-                youtubeId: "ATewh_UcF1w",   // ATewh_UcF1w&t=1s → ATewh_UcF1w
-                type: "recommended", 
-                desc: "백기사 010.7350.8836"
-            }
+            { id: 1, title: "한 산 <br>[백기사] 010.7350.8836", youtubeId: "sQR13GfDlEM", type: "popular", desc: "백기사 010.7350.8836" },
+            { id: 2, title: "군 함<br> [백기사] 010.7350.8836", youtubeId: "XOVFIKZ4qZc", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 3, title: "신 비 룡<br> [백기사] 010.7350.8836", youtubeId: "IrVmNJTWSck", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 4, title: "레전드오브히어로 <br>[백기사] 010.7350.8836", youtubeId: "NvwJiqlvgx8", type: "popular", desc: "백기사 010.7350.8836" },
+            { id: 5, title: "킹 불 새 <br>[백기사] 010.7350.8836", youtubeId: "ZmREoALW18c", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 6, title: "뉴 황금성K<br> [백기사] 010.7350.8836", youtubeId: "6Rrx0iNyGQ4", type: "popular", desc: "백기사 010.7350.8836" },
+            { id: 7, title: "태 평 양 <br>[백기사] 010.7350.8836", youtubeId: "b3kiTaCk40g", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 8, title: "고진감래 <br>[백기사] 010.7350.8836", youtubeId: "sp1r9rOqHWM", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 9, title: "불 용 5 <br>[백기사] 010.7350.8836", youtubeId: "yWpBrmS4qRI", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 10, title: "삼 순 이 <br>[백기사] 010.7350.8836", youtubeId: "4NGGL0bHTLw", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 11, title: "드래곤플라이<br>[백기사] 010.7350.8836", youtubeId: "V-h3L8uCIsg", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 12, title: "슈퍼회오리2<br> [백기사] 010.7350.8836", youtubeId: "xicvo7ayTyY", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 13, title: "아 테 네<br> [백기사] 010.7350.8836", youtubeId: "8e8VBzSe2Iw", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 14, title: "도 채 비<br> [백기사] 010.7350.8836", youtubeId: "-s8NqEk661A", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 15, title: "사 천 성 <br>[백기사] 010.7350.8836 ", youtubeId: "9DXhV1QmmN8", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 16, title: "요술램프<br> [백기사] 010.7350.8836", youtubeId: "y0XM3weVEkQ", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 18, title: "오 공 주 <br>[백기사] 010.7350.8836 ", youtubeId: "ApG2xnSK7pY", type: "recommended", desc: "백기사 010.7350.8836" },
+            { id: 17, title: "대 서 양 <br>[백기사] 010.7350.8836", youtubeId: "ATewh_UcF1w", type: "recommended", desc: "백기사 010.7350.8836" }
         ];
 
-        // DOM 요소
         const videoListElement = document.getElementById('videoList');
         const mainVideoPlayer = document.getElementById('mainVideoPlayer');
-        const videoPlaceholder = document.getElementById('videoPlaceholder');
         const mainVideoTitle = document.getElementById('mainVideoTitle');
         const mainVideoDesc = document.getElementById('mainVideoDesc');
         const menuButtons = document.querySelectorAll('.menu-btn');
@@ -532,28 +510,20 @@
         let currentFilter = 'all';
         let activeVideoId = null;
         
-        // 페이지 로드 시 초기화
         document.addEventListener('DOMContentLoaded', function() {
             if (gameVideos.length === 0) return;
-
-            // 전체 개수 (기본은 전체 영상 기준)
             currentCountElement.textContent = gameVideos.length;
-            
-            // ★ 첫 페이지에서 랜덤 영상 선택 ★
             const randomIndex = Math.floor(Math.random() * gameVideos.length);
             loadVideo(gameVideos[randomIndex]);
         });
         
-        // 현재 필터에 맞는 전체 목록
         function getFilteredVideos() {
             if (currentFilter === 'all') return gameVideos;
             return gameVideos.filter(video => video.type === currentFilter);
         }
 
-        // 영상 목록 렌더링 함수 (필터된 영상 전부 표시)
         function renderVideoList() {
             videoListElement.innerHTML = '';
-            
             const filteredVideos = getFilteredVideos();
             
             filteredVideos.forEach(video => {
@@ -569,42 +539,35 @@
                         <div class="play-icon"><i class="fas fa-play-circle"></i></div>
                     </div>
                     <div class="item-info">
-                        <div class="item-type">${video.type === 'popular' ? '인기 게임' : '추천 게임'}</div>
+                        <div class="item-type">${video.type === 'popular' ? '인기' : '추천'}</div>
                         <div class="item-title">${video.title}</div>
                     </div>
                 `;
                 
-                // 클릭 이벤트: 메인 플레이어 업데이트
                 videoItem.addEventListener('click', () => {
                     loadVideo(video);
+                    // 모바일에서 클릭 시 맨 위 플레이어로 부드럽게 스크롤 이동
+                    if (window.innerWidth <= 768) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
                 });
                 
                 videoListElement.appendChild(videoItem);
             });
-
             updateFilteredCount();
         }
         
-        // 영상 로드 함수 (임베드 대신 썸네일 + 유튜브 링크)
         function loadVideo(video) {
             activeVideoId = video.id;
-
-            if (videoPlaceholder) {
-                videoPlaceholder.remove();
-            }
-
             const thumbUrl = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
 
             mainVideoPlayer.innerHTML = `
-                <a href="https://www.youtube.com/watch?v=${video.youtubeId}" 
-                   target="_blank" 
-                   class="main-video-link">
+                <a href="https://www.youtube.com/watch?v=${video.youtubeId}" target="_blank" class="main-video-link">
                     <div class="main-video-thumb">
-                        <img src="${thumbUrl}" alt="${video.title}" 
-                             onerror="this.src='https://via.placeholder.com/640x360/333/fff?text=No+Image'">
+                        <img src="${thumbUrl}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/640x360/333/fff?text=No+Image'">
                         <div class="main-play-overlay">
                             <i class="fas fa-play-circle"></i>
-                            <span>유튜브에서 재생</span>
+                            <span>재생</span>
                         </div>
                     </div>
                 </a>
@@ -612,27 +575,22 @@
             
             mainVideoTitle.innerHTML = video.title;
             mainVideoDesc.textContent = video.desc;
-            
             renderVideoList();
         }
         
-        // 메뉴 버튼 클릭 이벤트
         menuButtons.forEach(button => {
             button.addEventListener('click', function() {
                 menuButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
-                
                 currentFilter = this.dataset.filter;
-                
                 renderVideoList();
             });
         });
         
-        // 개수 표시 업데이트
         function updateFilteredCount() {
             const filteredVideos = getFilteredVideos();
-            currentCountElement.textContent = filteredVideos.length; // 현재 필터의 전체 개수
-            filteredCountElement.textContent = filteredVideos.length; // 화면에 보이는 개수(전부)
+            currentCountElement.textContent = gameVideos.length;
+            filteredCountElement.textContent = filteredVideos.length;
         }
     </script>
 </body>
